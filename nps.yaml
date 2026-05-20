@@ -1,0 +1,31 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+
+proxies:
+  - name: myvpn
+    type: vless
+    server: 45.63.127.237
+    port: 44923
+    uuid: f6826390-ec58-4e5c-b591-433f3a2794ef
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: www.microsoft.com
+    reality-opts:
+      public-key: NJ8iHgR6cVQ8wYd732JNjAyWGY_2sYismXm0PtB3bh8
+      short-id: 226cda5da3a171
+    client-fingerprint: chrome
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - myvpn
+      - DIRECT
+
+rules:
+  - MATCH,🚀 节点选择
