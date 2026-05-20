@@ -1,0 +1,31 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+
+proxies:
+  - name: 首尔-M
+    type: vless
+    server: 43.108.13.175
+    port: 443
+    uuid: 278262aa-a847-47af-8e8c-fb2949ded536
+    network: tcp
+    tls: true
+    udp: true
+    servername: www.microsoft.com
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+
+    reality-opts:
+      public-key: n0Y-Nmnielv8KqdeFBDlof6EDsp73s_vWHyR_dFImU0
+      short-id: abcd1234
+
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - 首尔-M
+
+rules:
+  - MATCH,节点选择
